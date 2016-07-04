@@ -8,5 +8,5 @@ Hello world in GAE with Scala
 
 
 ## Notes
-* After deployment you can check with curl -X POST https://ggl008-microservices-dev.appspot.com/_ah/api/myService/v1/sayHi/Bob -d ""
+* After deployment you can check with curl -X POST https://PROJECT_ID.appspot.com/_ah/api/myService/v1/sayHi/Bob -d ""
 
