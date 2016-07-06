@@ -2,14 +2,15 @@
 
 val gaeVersion = "1.9.36"
 
-lazy val cloudEndpoints = taskKey[Unit]("Execute shell script to generate cloud endpoints")
+lazy val generateClientLib = taskKey[Unit]("Execute shell script to generate cloud endpoints")
 
-cloudEndpoints := {
+generateClientLib := {
     "./endpoints.sh get-client-lib" !
   }
 
 libraryDependencies ++= Seq(
     "javax.servlet" % "javax.servlet-api" % "3.1.0",
+    "com.googlecode.objectify" % "objectify" % "5.1.13",
     "com.google.appengine" % "appengine-endpoints" % gaeVersion
 )
 
