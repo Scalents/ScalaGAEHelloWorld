@@ -9,6 +9,7 @@ class SchedulerServlet extends HttpServlet {
 
   override def doGet( request: HttpServletRequest, response: HttpServletResponse ): Unit = {
     SchedulerServlet.log.info(s"Cron scheduled call")
+    Tasks.createTasks
     response.getWriter.println("Scheduled job") 
   }
 }
