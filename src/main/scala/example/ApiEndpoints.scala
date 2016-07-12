@@ -36,12 +36,23 @@ class ApiEndpoints {
   }
 
 
-  @ApiMethod( name = "user.find" )
+  @ApiMethod( name = "user.find", httpMethod= "get" )
   def findUser( @Named("id") id: String ): Response = {
     ApiEndpoints.log.info(s"Finding user ${id}") 
     val user = ofy().load().`type`(classOf[User]).id(id).now()
     Response(Option(user).toString)
   }
+
+  @ApiMethod( name = "user.all", httpMethod= "get" )
+  def findAllUsers: Response = {
+    import scala.collection.JavaConverters._
+    ApiEndpoints.log.info(s"Finding all users") 
+    val users = ofy().load().`type`(classOf[User]).list.asScala
+    Response(users.map(_.toString).mkString("[",",","]"))
+  }
+
+  @ApiMethod( name = "fail" )
+  def fail = Response( { throw new Exception("OMG! Is full of fail!")} ) 
 
 }
 

@@ -18,6 +18,7 @@ class User{
 	@BeanProperty 
 	var phone: String = _
 
+  override def toString = s"($ident, $name, $phone)" 
 }
 
 object User {
